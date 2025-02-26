@@ -21,13 +21,18 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/courses', [CourseController::class, 'index']);
+    Route::post('/courses', [CourseController::class, 'store']);
+    Route::get('/courses/{id}', [CourseController::class, 'show']);
+    Route::put('/courses/{id}', [CourseController::class, 'update']);
+    Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+    
     // CRUD de asignaturas
     Route::get('/subjects', [SubjectController::class, 'index']);
     Route::post('/subjects', [SubjectController::class, 'store']);
     Route::get('/subjects/{id}', [SubjectController::class, 'show']);
     Route::put('/subjects/{id}', [SubjectController::class, 'update']);
-    Route::delete('/subjects/{id}', [SubjectController::class, 
-    'destroy']);
+    Route::delete('/subjects/{id}', [SubjectController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
